@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int heightChecker(vector<int>& heights) {
+        vector<int> b(heights.begin(),heights.end());
+        sort(heights.begin(),heights.end());
+        int count =0;
+        for(int i=0;i<heights.size();i++){
+            if(heights[i]!=b[i]){
+                count++;
+            }
+        }
+        return count;
+    }
+};
+/*
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Height Checker.
+Memory Usage: 8.5 MB, less than 100.00% of C++ online submissions for Height Checker.
+Next challenges: 
+*/

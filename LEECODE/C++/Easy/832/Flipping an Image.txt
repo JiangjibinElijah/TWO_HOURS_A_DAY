@@ -1,0 +1,28 @@
+/*
+Runtime: 12 ms, faster than 78.08% of C++ online submissions for Flipping an Image.
+Memory Usage: 9.4 MB, less than 33.77% of C++ online submissions for Flipping an Image.
+*/
+class Solution {
+public:
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& A) {
+        for(int i=0;i< A.size();i++)
+        {
+            if(A[i].size() == 0){
+                continue;
+            }
+            int begin = 0, end = A[i].size()-1;
+            while(begin<end)
+            {
+                A[i][begin] =A[i][begin]^1;
+                A[i][end] =A[i][end]^1;
+                swap(A[i][begin],A[i][end]);
+                begin++;
+                end--;
+            }
+            if(begin==end){
+                 A[i][end] =A[i][end]^1;
+            }
+        }
+        return A;
+    }
+};

@@ -1,0 +1,19 @@
+/*Jewels and Stones
+Runtime: 4 ms, faster than 73.42% of C++ online submissions for Jewels and Stones.
+Memory Usage: 8.7 MB, less than 13.23% of C++ online submissions for Jewels and Stones.
+*/
+class Solution {
+public:
+    int numJewelsInStones(string J, string S) {
+        map<char,int> stonemap;
+        for(int i=0;i<S.length();i++){
+            stonemap[S[i]]++;
+        }
+        int sum=0;
+        for(int i=0;i<J.length();i++)
+        {
+            sum+=stonemap[J[i]];
+        }
+        return sum;
+    }
+};

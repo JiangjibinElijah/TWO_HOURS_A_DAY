@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words)
+    {
+        map<string, int> mapStudent;
+        string temp="";
+        //change the words to Morse Code
+        for(int i=0;i<words.size();i++)
+        {
+            temp="";
+            for(int j=0;j<words[i].length();j++)
+            {
+               int index =(int)(words[i][j]-'a');
+               temp+= words_point[index];
+            }
+            mapStudent[temp] = 1;
+        }
+        return mapStudent.size();
+    }
+    private:
+   vector<string> words_point= {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+};
+/*
+Runtime: 4 ms, faster than 81.92% of C++ online submissions for Unique Morse Code Words.
+Memory Usage: 9.1 MB, less than 61.54% of C++ online submissions for Unique Morse Code Words.
+2019.10.9
+*/

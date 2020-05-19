@@ -1,0 +1,52 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int rangeSumBST(TreeNode* root, int L, int R) {
+        int value = 0;
+        if(root== NULL)
+        {
+            return value;
+        }
+        //当前值小于左侧的，只看这个的右节点
+        if(root->val < L)
+        {
+            value = rangeSumBST(root->right,L,R);
+            if(value>0)
+            {
+              return value;
+            }
+            return 0;
+        }
+        if(root->val>=L&&root->val<=R)
+        {
+           value = value+root->val;
+            if(rangeSumBST(root->left,L,R)>0)
+            {
+              value = value+ rangeSumBST(root->left,L,R);
+            }
+            if(rangeSumBST(root->right,L,R)>0)
+            {
+              value = value+ rangeSumBST(root->right,L,R);
+            }
+            return value;
+        }
+        if(root->val>R)
+        {
+            value = rangeSumBST(root->left,L,R);
+            if(value>0)
+            {
+              return value;
+            }
+            return 0;
+        }
+         return value;
+    }
+};
